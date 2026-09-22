@@ -1,0 +1,10 @@
+* {
+    font-family:"PxPlus IBM VGA8", sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+  background: #c0c0c0;   /* silver แบบ W95 */
+  color: #000;
+}
+
