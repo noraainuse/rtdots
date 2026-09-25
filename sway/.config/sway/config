@@ -64,13 +64,13 @@ output eDP-1 resolution 1920x1080@60hz
 #
 # Example configuration:
 #
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+input type:touchpad {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+
 input type:keyboard {
     xkb_layout "us,th"
     xkb_options "grp:win_space_toggle"
