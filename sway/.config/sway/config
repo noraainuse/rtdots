@@ -17,11 +17,16 @@ set $right l
 set $term foot
 # Your preferred application launcher
 set $menu rofi -show run
-
+#screenshot
+bindsym $mod+Print exec sway-screenshot -m output
+bindsym $mod+Shift+s exec sway-screenshot -m region
 
 # no-title-bar
 default_border pixel 2
 seat * xcursor_theme Chicago95 24
+#window margin gaps
+gaps inner 5
+gaps outer 5
 #waybar
 bar {
     swaybar_command waybar
@@ -33,6 +38,8 @@ bar {
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg #018281 solid_color
+
+output eDP-1 resolution 1920x1080@60hz
 #
 # Example configuration:
 #
@@ -65,7 +72,8 @@ output * bg #018281 solid_color
 #   }
 #
 input type:keyboard {
-    xkb_layout "us"
+    xkb_layout "us,th"
+    xkb_options "grp:win_space_toggle"
     }
 #
 # You can also configure each device individually.
