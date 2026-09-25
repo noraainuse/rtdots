@@ -1,15 +1,20 @@
 {
-     "height": 30,
-     "modules-left": [
+    "position": "bottom",
+    "height": 30,
+    "modules-left": [
         "sway/workspaces"
-     ],
+    ],
     "modules-center": [
         "sway/window"
     ],
-        "modules-right": [
+    "modules-right": [
         "pulseaudio",
         "network",
         "battery",
         "clock"
-    ]
+    ],
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%Y-%m-%d}"
+    }
 }
