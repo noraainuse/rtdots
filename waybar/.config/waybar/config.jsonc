@@ -8,11 +8,17 @@
         "sway/window"
     ],
     "modules-right": [
-        "pulseaudio",
-        "network",
-        "battery",
-        "clock"
+        "group/my-container"
     ],
+    "group/my-container": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "network",
+            "battery",
+            "clock"
+        ]
+    },
     "clock": {
         "format": "{:%I:%M %p}",
         "format-alt": "{:%Y-%m-%d}"

@@ -32,12 +32,21 @@ window#waybar {
   box-shadow: inset 1px 1px 0 #808080;
 }
 
+#my-container {
+  background: #c0c0c0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  margin: 2px 0;
+}
+
+
 #pulseaudio,
 #network,
 #battery,
 #clock {
   font-family: "W95FA", sans-serif;
   font-size: 14px;
-  font-weight: lighter;
-  padding: 0 10px;
+  padding: 0 5px;
 }
