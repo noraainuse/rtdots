@@ -1,7 +1,13 @@
 {
     "position": "bottom",
     "height": 30,
+    "custom/start": {
+        "format": " Start",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
     "modules-left": [
+        "custom/start",
         "sway/workspaces"
     ],
     "modules-center": [
