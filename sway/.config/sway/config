@@ -17,9 +17,11 @@ set $right l
 set $term foot
 # Your preferred application launcher
 set $menu rofi -show run
+exec xdg-desktop-portal-wlr
 #screenshot
-bindsym $mod+Print exec sway-screenshot -m output
-bindsym $mod+Shift+s exec sway-screenshot -m region
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Print exec grim ~/Pictures/$(date +%F-%H%M%S).png
+bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') ~/Pictures/full-$(date +%F-%H%M%S).png
 
 # no-title-bar
 default_border pixel 2
@@ -242,7 +244,6 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
 
 #
 # Status Bar:
