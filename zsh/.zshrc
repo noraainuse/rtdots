@@ -109,3 +109,4 @@ source $ZSH/oh-my-zsh.sh
 
 # opencode
 export PATH=/home/lynn/.opencode/bin:$PATH
+export PATH="/home/lynn/.cargo/bin:$PATH"

@@ -76,6 +76,11 @@ input type:keyboard {
     xkb_options "grp:win_space_toggle"
     }
 #
+
+input "14139:4229:VXE_VXE_Mouse_1K_Dongle_Mouse" {
+    pointer_accel 0.1
+    accel_profile "flat"
+}
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 

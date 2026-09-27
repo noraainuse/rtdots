@@ -1,6 +1,7 @@
 * {
-  font-family: "PxPlus IBM VGA8", sans-serif;
+  font-family: "PxPlus IBM VGA 8x16", sans-serif;
   font-size: 14px;
+  font-weight: bold;
 }
 
 window#waybar {
@@ -75,6 +76,7 @@ window#waybar {
 #battery,
 #clock {
   font-family: "W95FA", sans-serif;
+  font-weight: normal;
   font-size: 14px;
   padding: 0 5px;
 }
