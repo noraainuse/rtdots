@@ -41,8 +41,12 @@ bar {
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# wallpaper for me
 #output * bg #018281 solid_color
-output * bg /home/lynn/Pictures/wallpaper/windows95tan.png fill
+#output * bg ~/Pictures/wallpaper/w95tan.png fill
+#output * bg ~/Pictures/wallpaper/abducted.png fill
+output * bg ~/Pictures/wallpaper/yukinagato.png fill
 
 output eDP-1 resolution 1920x1080@60hz
 #

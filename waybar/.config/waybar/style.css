@@ -73,7 +73,8 @@ window#waybar {
 #pulseaudio,
 #network,
 #battery,
-#clock {
+#clock,
+#tray {
   font-family: "W95FA", sans-serif;
   font-size: 14px;
   padding: 0 5px;

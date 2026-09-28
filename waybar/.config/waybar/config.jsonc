@@ -1,5 +1,5 @@
 {
-    "position": "bottom",
+    "position": "top",
     "height": 30,
     "custom/start": {
         "format": " Start",
@@ -26,17 +26,17 @@
             "clock"
         ]
     },
-    // "pulseaudio": {
-    //     "format": "{icon} {volume}%",
-    //     "format-muted": "\udb83\ude08 Muted",
-    //     "format-icons": {
-    //         "default": [
-    //             "\uf027",
-    //             "\udb81\udd80",
-    //             "\udb81\udd7e"
-    //         ]
-    //     }
-    // },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "\udb83\ude08 Muted",
+        "format-icons": {
+            "default": [
+                "\uf027",
+                "\udb81\udd80",
+                "\udb81\udd7e"
+            ]
+        }
+    },
     "clock": {
         "format": "{:%I:%M %p}",
         "format-alt": "{:%Y-%m-%d}"
@@ -50,15 +50,15 @@
             "icon-size": 21,
             "spacing": 10
         }
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "󰂎",
+            "󱊡",
+            "󱊢",
+            "󱊣",
+            "󱊣"
+        ]
     }
-    // "battery": {
-    //     "format": "{icon} {capacity}%",
-    //     "format-icons": [
-    //         "",
-    //         "",
-    //         "",
-    //         "",
-    //         ""
-    //     ]
-    // }
 }
