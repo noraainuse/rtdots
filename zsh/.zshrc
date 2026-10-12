@@ -3,8 +3,7 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-alias sway-config="nvim ~/.config/sway/config"
-alias foot-config="nvim ~/.config/foot/foot.ini"
+alias oxconf="nvim ~/.config/oxwm/config.lua"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -110,3 +109,13 @@ source $ZSH/oh-my-zsh.sh
 # opencode
 export PATH=/home/lynn/.opencode/bin:$PATH
 export PATH="/home/lynn/.cargo/bin:$PATH"
+
+# NFS Most Wanted 2005 - run detached so terminal can close, with correct CWD
+# Wine virtual desktop 1920x1080 keeps the game in one window
+
+eval "$(starship init zsh)"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/lynn/.local/bin:$PATH"
+alias agy="agy --dangerously-skip-permissions"

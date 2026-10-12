@@ -15,18 +15,25 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term foot
+set $files nemo
 # Your preferred application launcher
 set $menu rofi -show drun
 #exec-start
 exec nm-applet --indicator
 exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
+
 #screenshot
-bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Shift+s exec sh -c 'g=$(slurp) || exit; d=~/Pictures/Screenshots; mkdir -p "$d"; grim -g "$g" - | tee "$d/$(date +%F-%H%M%S).png" | wl-copy -t image/png'
 bindsym $mod+Print exec grim ~/Pictures/$(date +%F-%H%M%S).png
 bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') ~/Pictures/full-$(date +%F-%H%M%S).png
+bindsym $mod+g exec hyakai
 
 # no-title-bar
 default_border pixel 2
+# NFS Most Wanted 2005 - just float, no forced size. Verify class with: swaymsg -t get_tree | grep -i speed
+# Second rule covers `wine explorer /desktop=speed,...` (outer window is explorer.exe)
+for_window [class="speed.exe"] floating toggle
+for_window [class="explorer.exe" title="speed"] floating toggle
 seat * xcursor_theme Chicago95 24
 #window margin gaps
 gaps inner 5
@@ -46,13 +53,13 @@ bar {
 #output * bg #018281 solid_color
 #output * bg ~/Pictures/wallpaper/w95tan.png fill
 #output * bg ~/Pictures/wallpaper/abducted.png fill
-output * bg ~/Pictures/wallpaper/yukinagato.png fill
+output * bg ~/Pictures/wallpaper/yukiroom.png fill
 
-output eDP-1 resolution 1920x1080@60hz
+#output eDP-1 resolution 1920x1080@60hz
 #
 # Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#output HDMI-A-1 resolution 1920x1080 position 1920x1080@60hz
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -112,6 +119,9 @@ input "14139:4229:VXE_VXE_Mouse_1K_Dongle_Mouse" {
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
+
+    #file explorer
+    bindsym $mod+e exec $files
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
@@ -181,13 +191,13 @@ input "14139:4229:VXE_VXE_Mouse_1K_Dongle_Mouse" {
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    #bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym Mod1+RETURN floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -256,5 +266,44 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+
+
+# -- swayosd (optional) --
+#exec swayosd-server
+# Sink volume raise & lowser optionally with --device
+#bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+#bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume lower
+
+# Sink & Source volume toggle mute
+#bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+#bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+
+# Brightness raise & lower (optionally with --device, can be device name or wildcard)
+#bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise --device intel_backlight
+#bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower --device intel_backlight
+
+# Play/Pause current player
+#bindsym XF86AudioPlay exec swayosd-client --playerctl play-pause
+# Next song for current player
+#bindsym XF86AudioNext exec swayosd-client --playerctl next
+#------------------------------------
+
+# ============ Lock command ============
+set $lock swaylock -e -f -i ~/.config/sway/lock.jpg -s fill \
+  --clock --indicator --effect-blur 4x5 --indicator-caps-lock
+
+# ============ Idle daemon ============
+exec swayidle -w \
+  timeout 100 'grep -q 0 /sys/class/power_supply/AC0/online && brightnessctl -s && brightnessctl set 5% && notify-send "Dim" "On battery"' \
+    resume 'brightnessctl -r' \
+  timeout 200 'grep -q 0 /sys/class/power_supply/AC0/online && swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+  timeout 500 'swaylock -f' \
+  timeout 600 'grep -q 0 /sys/class/power_supply/AC0/online && systemctl suspend' \
+  timeout 900 'grep -q 1 /sys/class/power_supply/AC0/online && swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+  timeout 1200 'grep -q 1 /sys/class/power_supply/AC0/online && systemctl suspend-then-hibernate' \
+  before-sleep '$lock' \
+  after-resume 'swaymsg "output * dpms on"'
 
 include /etc/sway/config.d/*

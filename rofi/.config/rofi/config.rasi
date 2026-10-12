@@ -177,4 +177,30 @@ configuration {
 
 //@theme "/usr/share/rofi/themes/fancy2.rasi"
 
-@theme "/usr/share/rofi/themes/fancy.rasi"
+//@theme "/usr/share/rofi/themes/fancy.rasi"
+
+//@theme "/usr/share/rofi/themes/fancy2.rasi"
+
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+
+//@theme "/usr/share/rofi/themes/arthur.rasi"
+
+//@theme "/usr/share/rofi/themes/material.rasi"
+
+//@theme "/usr/share/rofi/themes/dmenu.rasi"
+
+//@theme "/usr/share/rofi/themes/Monokai.rasi"
+
+//@theme "/usr/share/rofi/themes/material.rasi"
+
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+
+//@theme "/usr/share/rofi/themes/material.rasi"
+
+//@theme "/usr/share/rofi/themes/dmenu.rasi"
+
+//@theme "/usr/share/rofi/themes/docu.rasi"
+
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"

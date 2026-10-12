@@ -1,6 +1,7 @@
 * {
   font-family: "PxPlus IBM VGA 8x16", sans-serif;
   font-size: 14px;
+  color: black;
 }
 
 window#waybar {
